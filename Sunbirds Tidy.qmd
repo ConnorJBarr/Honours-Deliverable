@@ -10,8 +10,6 @@ editor: visual
 ```{r}
 library(dplyr)
 library(ggplot2)
-library(ggpubr)
-library(magrittr)
 library(readxl)
 library(tidyverse)
 ```
