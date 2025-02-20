@@ -8,12 +8,64 @@ editor: visual
 ### Required Packages
 
 ```{r}
-
-library(car)
 library(dplyr)
-library(emmeans)
 library(ggplot2)
 library(ggpubr)
 library(magrittr)
+library(readxl)
 library(tidyverse)
+```
+
+### Read in the Excel file
+
+```{r}
+
+#Read the data in
+Sunbirds.xl <- read_xlsx("Data.excel.xlsx", range = "B1:J72")
+
+#Print a summary of the data
+Sunbirds.xl
+```
+
+Now that I have my datasheets in R, I start by tidying the data. In the above code I removed a few columns that were not necessary for this analysis that I want to do.
+
+Create a new column (Active_birds) which sums all the activities recorded along one transect for a specific time of day. Filter the data to just 4 columns.
+
+```{r}
+
+Sunbirds.mutate <- Sunbirds.xl %>% 
+              mutate("Active_birds" = feeding + flying + resting + preening + calling + chasing) %>%
+   select("species", "sex", "time_of_day", "Active_birds")
+
+Sunbirds.mutate
+```
+
+Combine the Sex and Species
+
+```{r}
+
+Sunbirds.tidy <- Sunbirds.mutate %>%
+                    unite("Sp.sex", species:sex, sep = "_")
+  
+Sunbirds.tidy
+```
+
+Plot a box plot showing the activity of each species and sex during the three different times of day.
+
+```{r}
+
+library(ggplot2)
+
+ggplot.Sunbirds <- Sunbirds.tidy %>% 
+  ggplot(aes(time_of_day, Active_birds, colour = Sp.sex)) +
+  geom_jitter(height = 0.01, alpha = 0.7) +
+  facet_wrap(~Sp.sex , nrow=2) + 
+  labs(x = "Time of Day",
+       y= "Active Birds",
+       title="Sunbirds active at different time periods by species and sex") +
+  theme_bw() + geom_boxplot() +
+  stat_summary(fun=mean, geom="point", shape=23, size=4)
+
+
+ggplot.Sunbirds
 ```
