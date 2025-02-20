@@ -1,0 +1,19 @@
+---
+title: "Sunbird"
+author: "Connor J Barr"
+format: html
+editor: visual
+---
+
+### Required Packages
+
+```{r}
+
+library(car)
+library(dplyr)
+library(emmeans)
+library(ggplot2)
+library(ggpubr)
+library(magrittr)
+library(tidyverse)
+```
