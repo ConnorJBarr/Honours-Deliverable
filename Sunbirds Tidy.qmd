@@ -52,8 +52,6 @@ Plot a box plot showing the activity of each species and sex during the three di
 
 ```{r}
 
-library(ggplot2)
-
 ggplot.Sunbirds <- Sunbirds.tidy %>% 
   ggplot(aes(time_of_day, Active_birds, colour = Sp.sex)) +
   geom_jitter(height = 0.01, alpha = 0.7) +
