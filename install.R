@@ -1,0 +1,5 @@
+install.packages("Quarto")
+install.packages("dplyr")
+install.packages("ggplot2")
+install.packages("readxl")
+install.packages("tidyverse")
