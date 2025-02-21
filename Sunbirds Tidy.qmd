@@ -10,7 +10,6 @@ editor: visual
 ```{r}
 library(dplyr)
 library(ggplot2)
-library(readxl)
 library(tidyverse)
 ```
 
@@ -19,19 +18,19 @@ library(tidyverse)
 ```{r}
 
 #Read the data in
-Sunbirds.xl <- read_xlsx("Data.excel.xlsx", range = "B1:J72")
+Sunbirds.rep <- read_csv("Data.csv")
 
 #Print a summary of the data
-Sunbirds.xl
+Sunbirds.rep
 ```
 
-Now that I have my datasheets in R, I start by tidying the data. In the above code I removed a few columns that were not necessary for this analysis that I want to do.
+Now the datasheet is in R.
 
 Create a new column (Active_birds) which sums all the activities recorded along one transect for a specific time of day. Filter the data to just 4 columns.
 
 ```{r}
 
-Sunbirds.mutate <- Sunbirds.xl %>% 
+Sunbirds.mutate <- Sunbirds.rep %>% 
               mutate("Active_birds" = feeding + flying + resting + preening + calling + chasing) %>%
    select("species", "sex", "time_of_day", "Active_birds")
 
