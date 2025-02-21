@@ -13,7 +13,7 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-### Read in the Excel file
+### Read in the CSV file
 
 ```{r}
 
@@ -25,6 +25,8 @@ Sunbirds.rep
 ```
 
 Now the datasheet is in R.
+
+### Tidy the data
 
 Create a new column (Active_birds) which sums all the activities recorded along one transect for a specific time of day. Filter the data to just 4 columns.
 
@@ -47,6 +49,8 @@ Sunbirds.tidy <- Sunbirds.mutate %>%
 Sunbirds.tidy
 ```
 
+### Create a preliminary plot
+
 Plot a box plot showing the activity of each species and sex during the three different times of day.
 
 ```{r}
@@ -55,8 +59,8 @@ ggplot.Sunbirds <- Sunbirds.tidy %>%
   ggplot(aes(time_of_day, Active_birds, colour = Sp.sex)) +
   geom_jitter(height = 0.01, alpha = 0.7) +
   facet_wrap(~Sp.sex , nrow=2) + 
-  labs(x = "Time of Day",
-       y= "Active Birds",
+  labs(x = "Time of day",
+       y= "Number of active birds",
        title="Sunbirds active at different time periods by species and sex") +
   theme_bw() + geom_boxplot() +
   stat_summary(fun=mean, geom="point", shape=23, size=4)
