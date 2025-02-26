@@ -9,5 +9,3 @@ Time of day categories:
 Morning (05:30 - 07:30)
 Mid-morning (08:30 - 10:30)
 Midday (11:30 - 13:30)
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ConnorJBarr/Honours-Deliverable/HEAD)
