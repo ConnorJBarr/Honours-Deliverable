@@ -13,5 +13,5 @@ Midday (11:30 - 13:30)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ConnorJBarr/Honours-Deliverable/HEAD)
 
-Just in case the badge fails (I have found it to go "out of date", here is the link to the Jupyter site created by mybinder.
+Just in case the badge fails (I have found that the "build memory limit is no longer supported" error pops up after a few days, here is the link to the Jupyter site created by mybinder.
 https://hub.2i2c.mybinder.org/user/connorjbarr-honours-deliverable-m0frhtf4/lab
